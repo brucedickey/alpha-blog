@@ -25,6 +25,10 @@ class ArticlesController < ApplicationController
         #@article = Article.new(params.require(:article).permit(:title, :description))
 
         @article = Article.new(article_params)
+
+        # FIXME this is temporary, prior to having auth implemented
+        @article.user = User.first
+
         if @article.save
            flash[:notice] = "Article was created successfully" 
            #redirect_to article_path(@article)
