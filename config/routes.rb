@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'      # Signup form
   #post 'users', to: 'users#create'
   resources :users, except: [:new]
+
+  # Login, logout don't hit DB, won't be REST resources
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 end
