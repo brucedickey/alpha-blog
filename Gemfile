@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Paginate data read from DB
 #gem 'will_paginate', '3.0.7'   Has error: https://stackoverflow.com/questions/40170786/pagination-issue-map-undefined-method-existent/40171044
-gem 'will_paginate', '3.1.5'
+gem 'will_paginate', '3.1.8'
 gem 'bootstrap-will_paginate', '0.0.10'
 
 # Use Active Storage variant

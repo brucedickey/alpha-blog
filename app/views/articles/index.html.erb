@@ -1,8 +1,16 @@
 
 <h1 class="text-center mt-4">All Articles</h1>
 
-<div align="center">
-    <!-- will_paginate -->
+<div class="row justify-content-center">
+    <div class="flickr_pagination">
+        <%= will_paginate @articles %>
+    </div>
 </div>
 
-<%= render @articles %>
+<%= render 'article' %>
+
+<div class="row justify-content-center">
+    <div class="flickr_pagination mb-4">
+        <%= will_paginate @articles %>
+    </div>
+</div>
