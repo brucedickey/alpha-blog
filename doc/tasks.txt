@@ -1,0 +1,10 @@
+tasks.txt
+===============================================================================
+
+BUGS:
+
+* flash[:danger] uses green background; should be red.
+* Hamburger icon for menu not shown on narrow screens.
+  Normal navbar menu items are correctly hidden, however.
+* When deleting multiple articles, confirmation is only requested for the first
+  one.
