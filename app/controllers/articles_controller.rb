@@ -25,13 +25,9 @@ class ArticlesController < ApplicationController
     end
 
     def create
-        #render plain: params[:article]   # Sends to browser
-        #@article = Article.new(params.require(:article).permit(:title, :description))
-
+        #render plain: params[:article]   # DEBUG, Sends to browser
         @article = Article.new(article_params)
-
-        # FIXME this is temporary, prior to having auth implemented
-        @article.user = User.first
+        @article.user = current_user
 
         if @article.save
            flash[:notice] = "Article was created successfully" 
