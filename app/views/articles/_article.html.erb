@@ -16,10 +16,13 @@
                         </h5>
                         <p class="card-text"><%= truncate(article.description, length: 100) %></p>
                         <%= link_to "View", article_path(article.id), class: "btn btn-outline-success" %>
-                        <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
-                        <%= link_to 'Delete', article_path(article), class: "btn btn-outline-danger",
-                            method: :delete, data: {confirm: "Are you sure?"} 
-                        %>
+                        
+                        <% if logged_in? and current_user == article.user %>
+                            <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
+                            <%= link_to 'Delete', article_path(article), class: "btn btn-outline-danger",
+                                method: :delete, data: {confirm: "Are you sure?"} 
+                            %>
+                        <% end %>
                     </div>
                     <div class="card-footer text-muted">
                         <div class="small">
