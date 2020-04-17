@@ -2,3 +2,57 @@ notes.txt
 ===============================================================================
 
 * The admin user (local dev) is Richard
+
+* git add .
+  git commit -m "commit message"
+  git push origin master
+  git branch   # View branches
+  git checkout -b "new branch name"
+
+* Run the rails server:
+    rails server
+    rails s         # Shortcut
+
+* Run the rails console:
+    rails console
+    rails c         # Shortcut
+    
+* Generate a DB migration:
+  Run
+    rails generate migration add_admin_to_users
+
+  Edit the db/migrations/add_admin_to_users.rb file to add the new column.
+
+  Run the migration:
+    rake db:migrate
+
+* To deploy to heroku
+   1. Ensure you have committed your code to your git repo, then:
+
+     git push heroku master
+
+   2. Then run any pending migrations:
+
+     heroku run rake db:migrate
+
+* To set admin user from heroku app run:
+
+     heroku run rails console
+
+  Then grab a user (example, user = User.last):
+
+     user.toggle!(:admin)
+
+  That will set the admin column to true (if it was false)
+
+* Run tests
+
+    rake test
+
+  Before running the first time:
+
+    rails db:migrate RAILS_ENV=test
+
+
+
+
