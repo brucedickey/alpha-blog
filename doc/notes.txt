@@ -21,13 +21,22 @@ notes.txt
     rails c         # Shortcut
     
 * Generate a DB migration:
-  Run
-    rails generate migration add_admin_to_users
+  -- Run to create a new table:
 
-  Edit the db/migrations/add_admin_to_users.rb file to add the new column.
+       rails generate migration create_article_categories
 
-  Run the migration:
-    rake db:migrate
+     Edit the db/migrations/create_article_categories.rb file
+     Run the migration
+        
+  -- Run to add a column to an existing table
+
+       rails generate migration add_admin_to_users
+
+     Edit the db/migrations/add_admin_to_users.rb file to add the new column.
+
+     Run the migration:
+       rake db:migrate
+
 
 * To deploy to heroku
    1. Ensure you have committed your code to your git repo, then:
