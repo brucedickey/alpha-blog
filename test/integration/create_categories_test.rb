@@ -3,7 +3,20 @@ require 'test_helper'
 
 class CreateCategoriesTest < ActionDispatch::IntegrationTest
 
+    def setup
+        @user = User.create(username: "john", email: "john@example.com", 
+                            password: "password", admin: true)
+    end
+
     test "get new category form and create category" do
+        # Q: `session` is in scope in the categories_controller_test.rb. 
+        #    Why is it not in scope here?
+        # A: That was in a ActionController subclass; this is not.
+        #session[:user_id] = @user.id   # Simulate admin login
+
+        # Passing the pwd because the create makes a hashed one, and this needs the raw one.
+        sign_in_as(@user, "password") 
+
         get new_category_path                         # GET the new category form via the `new` method in the controller
         assert_template 'categories/new'              # Make sure that is what we got
         assert_difference 'Category.count', 1 do
@@ -27,6 +40,8 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     end
 
     test "invalid category submission results in failure" do
+        sign_in_as(@user, "password") 
+        
         get new_category_path
         assert_template 'categories/new'
         assert_no_difference 'Category.count' do
