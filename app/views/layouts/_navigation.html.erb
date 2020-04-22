@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <%= link_to "ALPHA BLOG", root_path, class: "navbar-brand", id: "logo" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -10,7 +11,24 @@
             <%= link_to "Bloggers", users_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownArticles" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" 
+                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+            </a> 
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
+                <%= link_to "All Categories", categories_path, class: "dropdown-item" %>
+                <% Category.all.each do |category | %>
+                    <%= link_to "#{category.name}", category_path(category), class: "dropdown-item" %>
+                <% end %>
+                <% if logged_in? and current_user.admin? %>
+                    <div class="dropdown-divider"></div>
+                    <%= link_to "Create New Category", new_category_path, class: "dropdown-item" %>
+                <% end %>
+            </div>
+        </li>        
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownArticles" role="button" 
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Articles
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownArticles">
@@ -28,7 +46,8 @@
                 <%= link_to 'Log out', logout_path, class: "nav-link", method: :delete %>
             </li> 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Your <%= "Admin" if current_user.admin? %> Profile
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
