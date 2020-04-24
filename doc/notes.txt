@@ -1,5 +1,12 @@
+
+
+
 notes.txt
 ===============================================================================
+
+* Source: 
+    https://github.com/udemyrailscourse/alpha-blog
+    https://github.com/udemyrailscourse
 
 * The admin user (local dev) is Richard
 
@@ -27,7 +34,7 @@ notes.txt
 
      Edit the db/migrations/create_article_categories.rb file
      Run the migration
-        
+
   -- Run to add a column to an existing table
 
        rails generate migration add_admin_to_users
