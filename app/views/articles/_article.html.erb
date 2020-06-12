@@ -1,7 +1,5 @@
 
-
     <div class="container mb-5">
-    <!-- < % if @articles != nil %> -->
         <% @articles.each do |article| %>
             <div class="row justify-content-md-center">
                 <div class="col-8 mt-4">
@@ -10,16 +8,16 @@
                             <% if article.user %>
                                 by <%= link_to article.user.username, user_path(article.user) %> 
                             <% end %>
+                            
+                            <% if article.categories.any? %>
+                                <p>Categories: <%= render article.categories %></p> 
+                            <% end %>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <%= link_to article.title, article_path(article), class: "text-success" %>
                             </h5>
                             <p class="card-text"><%= truncate(article.description, length: 100) %></p>
-
-                            <% if article.categories.any? %>
-                                <p>Categories: <%= render article.categories %></p> 
-                            <% end %>
 
                             <%= link_to "View", article_path(article.id), class: "btn btn-outline-success" %>
                             <% if logged_in? and (current_user == article.user or current_user.admin?)%>
@@ -39,7 +37,4 @@
                 </div>
             </div>
         <% end %>
-    <!-- < % else %>
-        DEBUG -- No articles!
-    < % end %> -->
-</div>
+    </div>

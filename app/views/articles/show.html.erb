@@ -9,12 +9,12 @@
                     <%= link_to gravatar_for(@article.user), user_path(@article.user),
                          class: "mt-4"   # margin-top not working
                     %>
-                </div>
-                <div class="card-body">
-                    <div class="card-text text-left"><%= simple_format(@article.description) %></div>
                     <% if @article.categories.any? %>
                         <p>Categories: <%= render @article.categories %></p>
                     <% end %>
+                </div>
+                <div class="card-body">
+                    <div class="card-text text-left"><%= simple_format(@article.description) %></div>
                     <% if logged_in? and (current_user == @article.user or current_user.admin?) %>
                         <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-info" %>
                         <%= link_to 'Delete', article_path(@article), class: "btn btn-outline-danger",

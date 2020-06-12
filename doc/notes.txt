@@ -1,6 +1,4 @@
 
-
-
 notes.txt
 ===============================================================================
 
@@ -73,5 +71,17 @@ notes.txt
     rails db:migrate RAILS_ENV=test
 
 
+* Users for dev environment:
 
+Admin:
+pwd: richard   User id: 10, username: "Richard",      email: "richard@q.com",    password_digest: [FILTERED], admin: true>
+
+Other users:
+pwd: asdf      User id:  3, username: "asdf as f",    email: "asdf@asf.com",     password_digest: [FILTERED], admin: false>, 
+pwd: q         User id:  4, username: "qwer",         email: "q@q.com",          password_digest: [FILTERED], admin: false>, 
+pwd: qty       User id:  5, username: "qwerty",       email: "qty@q.com",        password_digest: [FILTERED], admin: false>, 
+pwd: raphael   User id:  6, username: "Raphael",      email: "r@q.com",          password_digest: [FILTERED], admin: false>, 
+pwd: ralph     User id:  7, username: "Ralph",        email: "ralph@q.com",      password_digest: [FILTERED], admin: false>, 
+pwd: darson    User id:  8, username: "d'Arson Crew", email: "dac@q.com",        password_digest: [FILTERED], admin: false>, 
+pwd: <unknown> User id:  2, username: "Mr ba",        email: "aa-aaaaaaa@a.com", password_digest: [FILTERED], admin: false>, 
 
