@@ -7,6 +7,8 @@ notes.txt
     https://github.com/udemyrailscourse
 
 * The admin user (local dev) is Richard
+    email: richard@q.com
+    pwd:   richard
 
 * git add .
   git commit -m "commit message"
@@ -16,6 +18,7 @@ notes.txt
 
 * View rails routes:
     rails routes --expanded
+    
 
 * Run the rails server:
     rails server
@@ -44,6 +47,9 @@ notes.txt
 
 
 * To deploy to heroku
+   After deployment, visit: https://alpha-blog-bd.herokuapp.com/, or
+                       run: heroku open
+
    1. Ensure you have committed your code to your git repo, then:
 
      git push heroku master
@@ -51,6 +57,8 @@ notes.txt
    2. Then run any pending migrations:
 
      heroku run rake db:migrate
+     or
+     heroku run rails db:migrate
 
 * To set admin user from heroku app run:
 

@@ -28,9 +28,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 
 # Paginate data read from DB
-#gem 'will_paginate', '3.0.7'   Has error: https://stackoverflow.com/questions/40170786/pagination-issue-map-undefined-method-existent/40171044
-gem 'will_paginate', '3.1.8'
+# gem 'will_paginate', '3.0.7'   Has error: https://stackoverflow.com/questions/40170786/pagination-issue-map-undefined-method-existent/40171044
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'will_paginate', '3.1.8'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -45,7 +45,7 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -67,4 +67,4 @@ group :production do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
