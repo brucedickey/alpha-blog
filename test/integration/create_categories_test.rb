@@ -9,11 +9,6 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
   end
 
   test "get new category form and create category" do
-    # Q: `session` is in scope in the categories_controller_test.rb.
-    #    Why is it not in scope here?
-    # A: That was in a ActionController subclass; this is not.
-    # session[:user_id] = @user.id   # Simulate admin login
-
     # Passing the pwd because the create makes a hashed one, and this needs the raw one.
     sign_in_as(@user, "password")
 
@@ -40,8 +35,6 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     # Confusing: index() is the controller method called for the `/categories` URL when called
     # from the browser, but here we say 'categories/index'.    TODO: Why?
     assert_template "categories/index"
-
-    # Verify that "sports" is one of the categories on that page.
     assert_match "sports", response.body
   end
 
@@ -49,16 +42,12 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     sign_in_as(@user, "password")
 
     get new_category_path
-
+  
     assert_template "categories/new"
     assert_no_difference "Category.count" do
-      post categories_path, params: {category: {name: ""}} # Invalid empty string
+      post categories_path, params: {category: {name: ""}}   # Pass an invalid empty string
     end
     assert_template "categories/new"
-    # assert_select "h2.panel-title"     # Look for existance of this
-    # assert_select "div.panel-body"
-
-    # For new course, instead of the lines from the video above.
     assert_select "div.alert-danger"
   end
 end

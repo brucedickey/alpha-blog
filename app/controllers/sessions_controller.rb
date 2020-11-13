@@ -12,10 +12,10 @@ class SessionsController < ApplicationController
       # https://guides.rubyonrails.org/action_controller_overview.html#session
       session[:user_id] = user.id
 
-      flash[:notice] = "Logged in successfully"
+      flash[:success] = "Logged in successfully"
       redirect_to user
     else
-      flash.now[:danger] = "You entered an incorrect email or password"
+      flash.now[:warning] = "You entered an incorrect email or password"
       render "new"
     end
   end
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     # Log out
     @current_user = nil
     session[:user_id] = nil
-    flash[:notice] = "Logged out"
+    flash[:success] = "Logged out"
     redirect_to root_path
   end
 end

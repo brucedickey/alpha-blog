@@ -1,26 +1,25 @@
 tasks.txt
 ===============================================================================
 
+TODO:
+
+* Search for TODO and learn what is going on at those places
+
+* Learn how this works (views/articles/_form.html.erb): 
+
+    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, class: "form-control shadow rounded" do |cb| %>
+        <%= cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + " " + cb.text} %>
+    <% end %>
+
+
 BUGS:
-
-* flash[:danger] uses green background; should be red.
-
-* Hamburger icon for menu not shown on narrow screens.
-  Normal navbar menu items are correctly hidden, however.
 
 * When deleting multiple articles, confirmation is only requested for the first
   one.
 
-* Search for TODO and learn what is going on at those places
-
 * Admin view profile not implemented / not working
 
 * Undefined method upon clicking Edit Your Profile when not logged in
-
-* Learn how this works (views/articles/_form.html.erb): 
-    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, class: "form-control shadow rounded" do |cb| %>
-        <%= cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + " " + cb.text} %>
-    <% end %>
 
 
 SCRATCHPAD:

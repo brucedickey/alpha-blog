@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = "Your account information was successfully updated"
+      flash[:success] = "Your account information was successfully updated"
       redirect_to @user # Short for @user.path
     else
       render "edit"
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    flash[:danger] = "User and all articles created by user have been deleted"
+    flash[:success] = "User and all articles created by user have been deleted"
     redirect_to users_path
   end
 
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       # Sign in the user upon sign-up success:
       session[:user_id] = @user.id
 
-      flash[:notice] =
+      flash[:success] =
         "Welcome to the Alpha Blog, #{@user.username}, you have successfully signed up."
       redirect_to user_path(@user)   # User's index.html.erb page
     else
@@ -62,14 +62,14 @@ class UsersController < ApplicationController
   def require_same_user
     return unless (current_user != @user) && !current_user.admin?
 
-    flash[:danger] = "You can only edit your own account"
+    flash[:warning] = "You can only edit your own account"
     redirect_to root_path
   end
 
   def require_admin
     return if current_user.admin?
 
-    flash[:danger] = "Only admin users can perform that action"
+    flash[:warning] = "Only admin users can perform that action"
     redirect_to root_path
   end
 end

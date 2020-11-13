@@ -25,7 +25,12 @@
         </div>
         <div class="form-group row justify-content-center">
           <%= f.label :categories, class: "col-2 col-form-label text-light" %>
+
           <div class="col-10">
+            <!-- API: collection_check_boxes(object, method, collection, value_method,
+                                             text_method, options = {}, html_options = {}, &block)
+            -->
+
             <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, class: "form-control shadow rounded" do |cb| %>
               <%= cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + " " + cb.text} %>
             <% end %>

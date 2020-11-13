@@ -35,14 +35,14 @@ class CategoriesControllerTest < ActionController::TestCase
 
   test "Should redirect the create action when an admin is not logged in" do
     # The setup() method does not log in a user, so the redirect should happen.
-    assert_no_difference "Category.count" do
+    assert_no_difference "Category.count", "assert_no_difference \"Category.count\"" do
       # In create_categories_test.rb, the line below is used w/ current Rails 6 version,
       # but does not work here. This is the line from the "Text Directions and code"
       # for Rails 5 as well.
       # TODO: Why does it work in create_categories_test.rb, but not here?
       # post categories_path, params: {category: {name: "sports"}}   # Rails 5
 
-      # This is from the video. Error: "catetory us undefined"
+      # This is from the video. Error: "catetory is undefined"
       # TODO: Assuming no errors, how does this specify a route, the correct route?
       # post :create, category: {name: "sports"}
 
@@ -51,6 +51,6 @@ class CategoriesControllerTest < ActionController::TestCase
       post :create, params: {category: {name: "sports"}}
     end
 
-    assert_redirected_to categories_path
+    assert_redirected_to categories_path, "assert_redirected_to categories_path"
   end
 end
