@@ -7,7 +7,7 @@ require "rails/test_help"
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
 
-  # Removing to prevent busy locks, since SQLite3 has issues...
+  # Now using a single process to prevent busy locks, since SQLite3 has issues...
   # https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3852574#questions/9537992
   #
   # parallelize(workers: :number_of_processors, with: :threads)
