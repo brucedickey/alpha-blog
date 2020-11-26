@@ -5,21 +5,45 @@ TODO:
 
 * Search for TODO and learn what is going on at those places
 
+* How is `session` in scope / where defined / how used?
+   -- Set in SessionsController, appears to be a private var.
+   -- Set in UsersController, appears to be a private var.
+   -- Set in CategoriesControllerTest, how is it in scope?
+   -- There is no sessions table...
+
 * Learn how this works (views/articles/_form.html.erb): 
+
+            https://api.rubyonrails.org/v6.0.3.4/classes/ActionView/Helpers/FormBuilder.html
+            https://api.rubyonrails.org/v6.0.3.4/classes/ActionView/Helpers/FormOptionsHelper.html
+
+            API: collection_check_boxes(object, method, collection, value_method,
+                                        text_method, options = {}, html_options = {}, &block)
+            
+            This is very poorly explained in the above.
+
+            ???           -- object       -- TODO: Not actually a param?
+            :category_ids -- method       -- `category_ids` is nowhere in the code...
+                                             Rails magic for the Categories table ids?
+            Category.all  -- collection   -- Returns an array of the categories
+            :id           -- value_method -- id col of the `categories` table?
+            :name         -- name_method  -- name col of the `categories` table?
+                          -- options      -- Not given
+            class: ...    -- html_options -- Given as a hash shortcut as the last param
+            do |cb|       -- block        -- Display the checkboxes
 
     <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, class: "form-control shadow rounded" do |cb| %>
         <%= cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + " " + cb.text} %>
     <% end %>
 
 
+FEATURES TO ADD:
+
+* When deleting an article on the Categories view, it redirects to the Articles view afterwards.
+  It would be a nice to remain on the Categories view.
+
+
 BUGS:
 
-* When deleting multiple articles, confirmation is only requested for the first
-  one.
-
-* Admin view profile not implemented / not working
-
-* Undefined method upon clicking Edit Your Profile when not logged in
 
 
 SCRATCHPAD:

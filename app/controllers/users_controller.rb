@@ -2,6 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show, :destroy]
+  before_action :require_logged_in, only: [:edit, :update, :destroy]
   before_action :require_same_user, only: [:edit, :update, :destroy]
   before_action :require_admin, only: [:destroy]
 
@@ -57,6 +58,13 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_logged_in
+    if current_user.nil?
+      flash[:warning] = "Please log in to edit your account"
+      redirect_to root_path
+    end
   end
 
   def require_same_user
