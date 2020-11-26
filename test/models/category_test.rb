@@ -15,23 +15,23 @@ class CategoryTest < ActiveSupport::TestCase
   end
 
   test "Category name should be present" do
-    @category.name = ""           # Set to invalid name
-    assert_not @category.valid?   # Passes if name is not valid
+    @category.name = ""                        # Set to invalid name
+    assert_not @category.valid?                # Passes if name is not valid
   end
 
   test "Category name should be unique" do
-    @category.save                             # Save in test DB
-    category2 = Category.new(name: "sports")   # Another with the same name
+    @category.save                             # Save in test DB; was set in the setup block
+    category2 = Category.new(name: "sports")   # Try to create another with the same name
     assert_not category2.valid?
   end
 
   test "Category name should not be too long" do
-    @category.name = "a" * 26      # Max is 25
+    @category.name = "a" * 26                  # Max is 25
     assert_not @category.valid?
   end
 
   test "Category name should not be too short" do
-    @category.name = "aa"          # Min is 3
+    @category.name = "aa"                      # Min is 3
     assert_not @category.valid?
   end
 end
