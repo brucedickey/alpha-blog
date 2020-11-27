@@ -63,6 +63,10 @@ notes.txt
      or
      heroku run rails db:migrate
 
+   3. Run bundle install on heroku:
+
+     heroku run bundle install
+
 * To set admin user from heroku app run:
 
      heroku run rails console
